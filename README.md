@@ -12,6 +12,12 @@
 
 
 
+V8版本可以下载，链接:
+
+https://pan.baidu.com/s/1yhqxFU4WQQp3iKN03C7GQQ?pwd=nyye
+
+提取码:nyye
+
 
 
 
