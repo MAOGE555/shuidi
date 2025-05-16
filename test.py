@@ -12,9 +12,9 @@ except ImportError:
     from urllib.request import Request, urlopen
 
 # 云市场分配的密钥Id
-secretId = "AKID7pMTb2YhfNla2MP2d01NUjJpetZ5RpUqmLvE"
+secretId = ""
 # 云市场分配的密钥Key
-secretKey = "HMcTbEiQNVkIwgkJEf967SG627kD19Iz90jQUQ1O"
+secretKey = ""
 source = "market"
 
 # 签名
