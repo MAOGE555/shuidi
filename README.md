@@ -19,8 +19,10 @@
 
 ## 下载地址：
 **若转载，请附上本项目地址。**
-通过网盘分享的文件：水滴渗透工具箱.zip
-链接: https://pan.baidu.com/s/1SdK--2TWJoiBWWgP26gicQ?pwd=uc3c 提取码: uc3c
+
+- 百度网盘链接: 
+- https://pan.baidu.com/s/1SdK--2TWJoiBWWgP26gicQ?pwd=uc3c 
+- 提取码: uc3c
 
 ## 工具截图：
 
@@ -35,7 +37,8 @@
 ## 交流&反馈
 如有bug或者新建议，欢迎加群反馈~
 Q群：261086583
-![qrcode_1749911719414](https://github.com/user-attachments/assets/203d9972-bf8a-4394-8ad9-93f0f5608583)
+![image](https://github.com/user-attachments/assets/eb68c84f-a1bd-454c-aba9-89857878a304)
+
 
 
 ## 使用声明
