@@ -11,7 +11,7 @@
 
 
 
-**本次更新如下**：
+**本次V9更新如下**：
 - 大改UI页面，美化了一下，调整了下布局，分类更合理。
 - 大幅提高工具数量，比之前更全面了一些。
 - 更新了所有工具的版本为最新版。
@@ -29,3 +29,6 @@
 ![444](https://github.com/user-attachments/assets/dd4619f4-d6ba-4008-820e-c3ff3f1be638)
 ![555](https://github.com/user-attachments/assets/fe6f9346-7bd6-41eb-9a3f-1ad7231f9f4f)
 ![666](https://github.com/user-attachments/assets/4c348c5f-39b1-4ece-be73-e2dfddbbfb23)
+
+### 免责声明
+此工具仅限于安全研究，用户承担因使用此工具而导致的所有法律和相关责任！作者不承担任何法律责任。
