@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 ip_pattern = re.compile(r'^\d{1,3}(\.\d{1,3}){3}$')
 
 
+
 # 定义一个函数来处理单个域名或IP及其端口
 def extract_ip_or_domain_and_port(item):
     item = item.strip()  # 去除前后的空格和换行符
