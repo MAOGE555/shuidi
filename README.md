@@ -5,7 +5,8 @@
 
 
 
-## 本次V10更新如下：
+
+# 本次V10更新如下：
 - 优化了win11页面UI和win11启动卡顿问题
 - 增加一部分工具
 - 增加了一些浏览器插件（plugin目录）
@@ -16,8 +17,8 @@
 ## 下载地址（转载请附上本项目地址）：
 
 - 百度网盘链接: 
-- https://pan.baidu.com/s/1SdK--2TWJoiBWWgP26gicQ?pwd=uc3c 
-- 提取码: uc3c
+- https://pan.baidu.com/s/1xV7DXob4gQBSkwk9dzUNJw?pwd=qia3
+- 提取码: qia3 
 
 ## 工具截图：
 <img width="727" height="824" alt="image" src="https://github.com/user-attachments/assets/8d544f56-d9de-46fa-88ab-0f2fc80bbe3c" />
