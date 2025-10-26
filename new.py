@@ -39,7 +39,6 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setItalic(False)
         font.setUnderline(False)
-        font.setWeight(50)
         font.setStrikeOut(False)
         self.tabWidget.setFont(font)
         self.tabWidget.setMouseTracking(False)
@@ -496,6 +495,13 @@ class Ui_MainWindow(object):
         self.pushButton_51.setFont(font)
         self.pushButton_51.setStyleSheet("background-color:#c5c5c5")
         self.pushButton_51.setObjectName("pushButton_51")
+        self.pushButton_61 = QtWidgets.QPushButton(parent=self.groupBox_6)
+        self.pushButton_61.setGeometry(QtCore.QRect(430, 80, 101, 31))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.pushButton_61.setFont(font)
+        self.pushButton_61.setStyleSheet("background-color:#c5c5c5")
+        self.pushButton_61.setObjectName("pushButton_61")
         self.groupBox_4 = QtWidgets.QGroupBox(parent=self.tab_1)
         self.groupBox_4.setGeometry(QtCore.QRect(10, 220, 661, 121))
         self.groupBox_4.setObjectName("groupBox_4")
@@ -671,7 +677,7 @@ class Ui_MainWindow(object):
         self.pushButton_102.setStyleSheet("background-color:#c5c5c5")
         self.pushButton_102.setObjectName("pushButton_102")
         self.pushButton_123 = QtWidgets.QPushButton(parent=self.groupBox_19)
-        self.pushButton_123.setGeometry(QtCore.QRect(160, 30, 111, 31))
+        self.pushButton_123.setGeometry(QtCore.QRect(160, 30, 121, 31))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         self.pushButton_123.setFont(font)
@@ -681,7 +687,7 @@ class Ui_MainWindow(object):
         self.groupBox_20.setGeometry(QtCore.QRect(10, 440, 661, 71))
         self.groupBox_20.setObjectName("groupBox_20")
         self.pushButton_126 = QtWidgets.QPushButton(parent=self.groupBox_20)
-        self.pushButton_126.setGeometry(QtCore.QRect(330, 30, 121, 31))
+        self.pushButton_126.setGeometry(QtCore.QRect(410, 30, 131, 31))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         self.pushButton_126.setFont(font)
@@ -695,14 +701,21 @@ class Ui_MainWindow(object):
         self.pushButton_125.setStyleSheet("background-color:#c5c5c5")
         self.pushButton_125.setObjectName("pushButton_125")
         self.pushButton_113 = QtWidgets.QPushButton(parent=self.groupBox_20)
-        self.pushButton_113.setGeometry(QtCore.QRect(470, 30, 121, 31))
+        self.pushButton_113.setGeometry(QtCore.QRect(550, 30, 101, 31))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         self.pushButton_113.setFont(font)
         self.pushButton_113.setStyleSheet("background-color:rgb(85, 170, 255)")
         self.pushButton_113.setObjectName("pushButton_113")
+        self.pushButton_262 = QtWidgets.QPushButton(parent=self.groupBox_20)
+        self.pushButton_262.setGeometry(QtCore.QRect(150, 30, 121, 31))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.pushButton_262.setFont(font)
+        self.pushButton_262.setStyleSheet("background-color:#c5c5c5")
+        self.pushButton_262.setObjectName("pushButton_262")
         self.pushButton_151 = QtWidgets.QPushButton(parent=self.groupBox_20)
-        self.pushButton_151.setGeometry(QtCore.QRect(160, 30, 151, 31))
+        self.pushButton_151.setGeometry(QtCore.QRect(280, 30, 121, 31))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         self.pushButton_151.setFont(font)
@@ -1199,6 +1212,13 @@ class Ui_MainWindow(object):
         self.pushButton_238.setFont(font)
         self.pushButton_238.setStyleSheet("background-color:#c5c5c5")
         self.pushButton_238.setObjectName("pushButton_238")
+        self.pushButton_261 = QtWidgets.QPushButton(parent=self.groupBox_25)
+        self.pushButton_261.setGeometry(QtCore.QRect(520, 80, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.pushButton_261.setFont(font)
+        self.pushButton_261.setStyleSheet("background-color:#c5c5c5")
+        self.pushButton_261.setObjectName("pushButton_261")
         self.textEdit_6 = QtWidgets.QTextEdit(parent=self.tab_4)
         self.textEdit_6.setGeometry(QtCore.QRect(90, 10, 481, 31))
         font = QtGui.QFont()
@@ -1339,7 +1359,7 @@ class Ui_MainWindow(object):
         self.pushButton_56.setObjectName("pushButton_56")
         self.pushButton_231 = QtWidgets.QPushButton(parent=self.groupBox_23)
         self.pushButton_231.setGeometry(QtCore.QRect(380, 80, 101, 31))
-        self.pushButton_231.setStyleSheet("background-color:rgb(85, 170, 255)")
+        self.pushButton_231.setStyleSheet("background-color:#c5c5c5")
         self.pushButton_231.setObjectName("pushButton_231")
         self.pushButton_53 = QtWidgets.QPushButton(parent=self.groupBox_23)
         self.pushButton_53.setGeometry(QtCore.QRect(130, 30, 101, 31))
@@ -1772,10 +1792,12 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_3, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 718, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 718, 22))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(parent=self.menubar)
         self.menu.setObjectName("menu")
+        self.menu_2 = QtWidgets.QMenu(parent=self.menubar)
+        self.menu_2.setObjectName("menu_2")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -1792,10 +1814,13 @@ class Ui_MainWindow(object):
         self.action_3.setObjectName("action_3")
         self.action_4 = QtGui.QAction(parent=MainWindow)
         self.action_4.setObjectName("action_4")
+        self.actiongo = QtGui.QAction(parent=MainWindow)
+        self.actiongo.setObjectName("actiongo")
         self.menu.addAction(self.action_0066F)
-        self.menu.addAction(self.actionssss)
         self.menu.addAction(self.action_4)
+        self.menu_2.addAction(self.actiongo)
         self.menubar.addAction(self.menu.menuAction())
+        self.menubar.addAction(self.menu_2.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -1803,7 +1828,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "水滴渗透工具箱 V9.0 by maoge"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "水滴工具箱 V10 by：maoge"))
         MainWindow.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.centralwidget.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.groupBox.setTitle(_translate("MainWindow", "常用工具栏"))
@@ -1842,8 +1867,11 @@ class Ui_MainWindow(object):
         self.pushButton_29.setText(_translate("MainWindow", "wxapkgconvertor"))
         self.pushButton_236.setText(_translate("MainWindow", "安卓app读取key"))
         self.textEdit_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:\'微软雅黑\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p></body></html>"))
         self.textEdit_5.setPlaceholderText(_translate("MainWindow", "在这里取走你需要的命令"))
@@ -1886,6 +1914,7 @@ class Ui_MainWindow(object):
         self.pushButton_44.setText(_translate("MainWindow", "SqlmapXPlus"))
         self.pushButton_46.setText(_translate("MainWindow", "web批量请求器"))
         self.pushButton_51.setText(_translate("MainWindow", "pocsuite3"))
+        self.pushButton_61.setText(_translate("MainWindow", "Venom流量转发"))
         self.groupBox_4.setTitle(_translate("MainWindow", "目录扫描✚fuzz参数"))
         self.pushButton_6.setText(_translate("MainWindow", "御剑"))
         self.pushButton_5.setText(_translate("MainWindow", "dirsearch"))
@@ -1923,6 +1952,7 @@ class Ui_MainWindow(object):
         self.pushButton_126.setText(_translate("MainWindow", "Springboot检测脚本"))
         self.pushButton_125.setText(_translate("MainWindow", "Springboot综合利用"))
         self.pushButton_113.setText(_translate("MainWindow", "SB检测脚本"))
+        self.pushButton_262.setText(_translate("MainWindow", "Springboot综合2"))
         self.pushButton_151.setText(_translate("MainWindow", "SpringExploitGUI"))
         self.groupBox_22.setTitle(_translate("MainWindow", "Nacos"))
         self.pushButton_128.setText(_translate("MainWindow", "nacos添加用户"))
@@ -2014,6 +2044,7 @@ class Ui_MainWindow(object):
         self.pushButton_199.setText(_translate("MainWindow", "API-explorer各平台key利用"))
         self.pushButton_70.setText(_translate("MainWindow", "OSS接管aksk_tool"))
         self.pushButton_238.setText(_translate("MainWindow", "API-T00L各平台key利用"))
+        self.pushButton_261.setText(_translate("MainWindow", "地图key利用"))
         self.textEdit_6.setPlaceholderText(_translate("MainWindow", "请输入url"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "综合工具"))
         self.groupBox_8.setTitle(_translate("MainWindow", "webshell管理&&免杀"))
@@ -2077,8 +2108,11 @@ class Ui_MainWindow(object):
         self.pushButton_86.setText(_translate("MainWindow", "查看登录成功IP"))
         self.pushButton_105.setText(_translate("MainWindow", "细致查看端口及对应进程"))
         self.textEdit_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:\'微软雅黑\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p></body></html>"))
         self.textEdit_4.setPlaceholderText(_translate("MainWindow", "在这里取走你需要的命令"))
@@ -2118,19 +2152,28 @@ class Ui_MainWindow(object):
         self.pushButton_260.setText(_translate("MainWindow", "win查看系统服务"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "溯源分析"))
         self.menu.setTitle(_translate("MainWindow", "关于"))
+        self.menu_2.setTitle(_translate("MainWindow", "项目地址"))
         self.action_0066F.setText(_translate("MainWindow", "功能介绍"))
         self.actionssss.setText(_translate("MainWindow", "项目地址"))
         self.action.setText(_translate("MainWindow", "反馈问题"))
         self.action_2.setText(_translate("MainWindow", "作者"))
         self.action_3.setText(_translate("MainWindow", "4.0 更新内容"))
-        self.action_4.setText(_translate("MainWindow", "问题反馈"))
+        self.action_4.setText(_translate("MainWindow", "QQ群"))
+        self.actiongo.setText(_translate("MainWindow", "go~"))
+
+
+
+
+
+
+
 
 
 
         # 以下为介绍和反馈左上角专栏
         self.action_0066F.triggered.connect(self.messageDialog)
-        self.actionssss.triggered.connect(self.messagetwo)
         self.action_4.triggered.connect(self.messagethree)
+        self.actiongo.triggered.connect(self.messagetwo)
 
 
 
@@ -2231,6 +2274,7 @@ class Ui_MainWindow(object):
         self.pushButton_16.clicked.connect(self.sqlmap)
         self.pushButton_31.clicked.connect(self.ghauri)
         self.pushButton_44.clicked.connect(self.sqlmap_plus)
+        self.pushButton_61.clicked.connect(self.venom)
 
 
 
@@ -2271,6 +2315,7 @@ class Ui_MainWindow(object):
         self.pushButton_219.clicked.connect(self.thinkphp5)
 
         self.pushButton_125.clicked.connect(self.springboot)
+        self.pushButton_262.clicked.connect(self.springboot2)
         self.pushButton_151.clicked.connect(self.springexploit)
         self.pushButton_126.clicked.connect(self.springbootjiaoben)
         self.pushButton_113.clicked.connect(self.SBjioaben)
@@ -2312,6 +2357,8 @@ class Ui_MainWindow(object):
         self.pushButton_107.clicked.connect(self.alykeytwo)
         self.pushButton_199.clicked.connect(self.API_explorer)
         self.pushButton_238.clicked.connect(self.API_T00L)
+        self.pushButton_261.clicked.connect(self.mapkey)
+
 
         self.pushButton_211.clicked.connect(self.old_JNDII)
         self.pushButton_210.clicked.connect(self.JNDIInject)
@@ -2455,12 +2502,3 @@ class Ui_MainWindow(object):
         self.pushButton_258.clicked.connect(self.qidongxiang)
         self.pushButton_259.clicked.connect(self.keyi)
         self.pushButton_260.clicked.connect(self.xitongfuwu)
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
