@@ -11,6 +11,13 @@ import subprocess
 import platform
 import pygame
 
+# 设置启动UI的固定
+if getattr(sys, 'frozen', False):
+    pyqt_path = os.path.dirname(sys.modules['PyQt6'].__file__)
+    os.environ['QT_PLUGIN_PATH'] = os.path.join(pyqt_path, "Qt6", "plugins")
+
+
+
 # 获取当前绝对路径
 tools_path = os.getcwd()
 if platform.system() == "Windows":
@@ -31,11 +38,11 @@ class button(new.Ui_MainWindow):
     def messagetwo(self):
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Icon.Information)
-        msg_box.setText('https://github.com/MAOGE555/shuidi   \n')
-        msg_box.setWindowTitle('项目地址:')
-        msg_box.exec()
         th = threading.Thread(target=self.messagetwo_start, )  # 启动子类
         th.start()
+        msg_box.setText('https://github.com/MAOGE555/shuidi  \n')
+        msg_box.setWindowTitle('项目地址:')
+        msg_box.exec()
     def messagetwo_start(self):
         command = 'explorer https://github.com/MAOGE555/shuidi'
         subprocess.Popen(command, shell=True)
@@ -257,45 +264,153 @@ class button(new.Ui_MainWindow):
         return url
 
     def fscan(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\fscan\\fscan.exe"
+        target = self.No_filtering()
+        user_args = target.split()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-h"]  + user_args
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\fscan\\ && fscan.exe -h {}\"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\fscan\\ && fscan.exe -h {}\"'.format(self.No_filtering()))
+
+
 
     def dddd(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\dddd-main\\dddd64.exe"
+        target = self.No_filtering()
+        user_args = target.split()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-t"]  + user_args +  ["-gpt", "800", "-wt", "1000"]
+            final_command = ['cmd', '/K'] + scan_command
+            print(f"即将执行的命令: {final_command}")
+            tool_directory = os.path.dirname(path)
+
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\dddd-main\\ && dddd64.exe -t {} -gpt 800 -wt 1000 \"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
 
     def rustscan(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\rustscan\\rustscan.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-a", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\rustscan\\ && rustscan.exe -a {}\"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\rustscan\\ && rustscan.exe -a {}\"'.format(self.No_filtering()))
 
     def vscan(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\vscan\\vscan.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-host", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\vscan\\ && vscan.exe -host {}\"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+
+
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\vscan\\ && vscan.exe -host {}\"'.format(self.No_filtering()))
     def soda(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\soda\\soda64.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-t", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\soda\\ && soda64.exe -t {}\"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        #
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\soda\\ && soda64.exe -t {}\"'.format(self.No_filtering()))
 
     def gogo(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\gogo\\gogo.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-i", target,"-p", "win,db,top2,http"]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\gogo\\ && gogo.exe -i {} -p win,db,top2,http \"'.format(self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\gogo\\ && gogo.exe -i {} -p win,db,top2,http \"'.format(self.No_filtering()))
 
     def tscan(self):
         th = threading.Thread(target=self.tscan_start, )
@@ -305,18 +420,46 @@ class button(new.Ui_MainWindow):
         subprocess.Popen(command, shell=True)
 
     def tscan_cient(self):
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\TscanCient\\TscanClient.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-h',target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\TscanCient\\ && TscanClient.exe -h {} \"'.format(self.No_filtering()))
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\TscanCient\\ && TscanClient.exe -h {} \"'.format(self.No_filtering()))
 
     def nmap(self):  # 文档未改
-        if self.No_filtering() ==None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path+"\\tools\\4_redteam\\1_扫描器\\nmap\\nmap.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-sn","-PS80", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\nmap\\ && nmap.exe -sn -PS80 {}\"'.format(self.No_filtering()))
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # if self.No_filtering() ==None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system ('start ''cmd \"/K cd tools\\4_redteam\\1_扫描器\\nmap\\ && nmap.exe -sn -PS80 {}\"'.format(self.No_filtering()))
 
 
     def masscan(self):  # 文档未改
@@ -382,14 +525,47 @@ class button(new.Ui_MainWindow):
         th = threading.Thread(target=self.dirsearch_start, )  # 启动子类
         th.start()
     def dirsearch_start(self):
+        # path = tools_path + "\\tools\\4_redteam\\1_扫描器\\nmap\\nmap.exe"
+        # target = self.No_filtering()
+        # if os.path.exists(path):
+        #     # 将要执行的完整命令（程序+参数）构建成一个列表
+        #     scan_command = [path, "-sn", "-PS80", target]
+        #     final_command = ['cmd', '/K'] + scan_command
+        #     tool_directory = os.path.dirname(path)
+        #     subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        # else:
+        #     program_dir = os.path.dirname(path)
+        #     if os.path.exists(program_dir):
+        #         os.startfile(program_dir)
+        #     elif 'tools_path' in locals() and os.path.exists(tools_path):
+        #         os.startfile(tools_path)
         os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\dirsearch\\ && {} dirsearch.py -u {}\"'.format(python3,self.No_filtering()))
 
 
     def spray(self):  # 文档未改
-        th = threading.Thread(target=self.spray_start, )  # 启动子类
-        th.start()
-    def spray_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\spray\\ && spray.exe -d top1000.txt -u {}\"'.format(self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\2_目录扫描\\spray\\spray.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-d", "top1000.txt", "-u",target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+
+    #
+    #     th = threading.Thread(target=self.spray_start, )  # 启动子类
+    #     th.start()
+    # def spray_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\spray\\ && spray.exe -d top1000.txt -u {}\"'.format(self.No_filtering()))
 
     def kbscan(self):
         th=threading.Thread(target=self.kbscan_start,)#启动子类
@@ -406,16 +582,47 @@ class button(new.Ui_MainWindow):
         subprocess.Popen(command, shell=True)
 
     def feroxbuster(self):  # 文档未改
-        th = threading.Thread(target=self.feroxbuster_start, )  # 启动子类
-        th.start()
-    def feroxbuster_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\feroxbuster\\ && feroxbuster.exe -u {} -w top1000.txt\"'.format(self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\2_目录扫描\\feroxbuster\\feroxbuster.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-u',target,'-w', 'top1000.txt']
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.feroxbuster_start, )  # 启动子类
+    #     th.start()
+    # def feroxbuster_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\feroxbuster\\ && feroxbuster.exe -u {} -w top1000.txt\"'.format(self.No_filtering()))
 
     def nomore403(self):  # 文档未改
-        th = threading.Thread(target=self.nomore403_start, )  # 启动子类
-        th.start()
-    def nomore403_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\403绕过\\ && nomore403.exe -u {}\"'.format(self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\2_目录扫描\\403绕过\\nomore403.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-u", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.nomore403_start, )  # 启动子类
+    #     th.start()
+    # def nomore403_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\403绕过\\ && nomore403.exe -u {}\"'.format(self.No_filtering()))
 
 
     def ffuf(self):  # 文档未改
@@ -433,16 +640,50 @@ class button(new.Ui_MainWindow):
             'start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\Arjun\\ && arjun -u {}\"'.format(self.No_filtering()))
 
     def katana(self):  # 文档未改
-        th = threading.Thread(target=self.katana_start, )  # 启动子类
-        th.start()
-    def katana_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\katana\\ && katana.exe -u {}\"'.format(self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\2_目录扫描\\katana\\katana.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-u", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.katana_start, )  # 启动子类
+    #     th.start()
+    # def katana_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\katana\\ && katana.exe -u {}\"'.format(self.No_filtering()))
 
     def rad(self):  # 文档未改
-        th = threading.Thread(target=self.rad_start, )  # 启动子类
-        th.start()
-    def rad_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\rad\\ && rad.exe -t {}\"'.format(self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\2_目录扫描\\rad\\rad.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-t", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.rad_start, )  # 启动子类
+    #     th.start()
+    # def rad_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\2_目录扫描\\rad\\ && rad.exe -t {}\"'.format(self.No_filtering()))
 
     # ======================================================================
     #                            分页栏3
@@ -450,8 +691,25 @@ class button(new.Ui_MainWindow):
 
 
     def subfinder(self):  # 文档未改
-        os.system(
-            'start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\subfinder\\ && subfinder.exe -d {}\"'.format(self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\3_子域名and指纹识别\\subfinder\\subfinder.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-d", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # os.system(
+        #     'start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\subfinder\\ && subfinder.exe -d {}\"'.format(self.No_filtering()))
 
     def oneforall(self):  # 文档未改
         command = '%SystemRoot%/explorer.exe {} \\tools\\4_redteam\\3_子域名and指纹识别\\OneForAll-0.4.5\\'.format(tools_path)
@@ -459,10 +717,27 @@ class button(new.Ui_MainWindow):
 
 
     def ksubdomain(self):  # 文档未改
-        th = threading.Thread(target=self.ksubdomain_start, )  # 启动子类
-        th.start()
-    def ksubdomain_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\ksubdomain\\ && ksubdomain.exe e -d {}\"'.format(self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\3_子域名and指纹识别\\ksubdomain\\ksubdomain.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "e",'-d', target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.ksubdomain_start, )  # 启动子类
+    #     th.start()
+    # def ksubdomain_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\ksubdomain\\ && ksubdomain.exe e -d {}\"'.format(self.No_filtering()))
 
 
 
@@ -480,18 +755,50 @@ class button(new.Ui_MainWindow):
 
 
     def P1finger(self):
-        if self.No_filtering() == None:
-            msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
-            msg_box.exec_()
+        path = tools_path + "\\tools\\4_redteam\\3_子域名and指纹识别\\P1finger\\P1finger.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "rule", '-u', target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
         else:
-            os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\P1finger\\ && P1finger.exe rule -u {}\"'.format(
-                self.No_filtering()))
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # if self.No_filtering() == None:
+        #     msg_box = QMessageBox(QMessageBox.Warning, '你这扑街仔', '不许啥都不输入')
+        #     msg_box.exec_()
+        # else:
+        #     os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\P1finger\\ && P1finger.exe rule -u {}\"'.format(
+        #         self.No_filtering()))
 
     def observer_ward(self):  # 文档未改
-        th = threading.Thread(target=self.observer_ward_start, )  # 启动子类
-        th.start()
-    def observer_ward_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\observer_ward\\ && observer_ward.exe -t {}\"'.format(self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\3_子域名and指纹识别\\observer_ward\\observer_ward.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, "-t", target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+
+    #     th = threading.Thread(target=self.observer_ward_start, )  # 启动子类
+    #     th.start()
+    # def observer_ward_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\3_子域名and指纹识别\\observer_ward\\ && observer_ward.exe -t {}\"'.format(self.No_filtering()))
 
 
 
@@ -517,16 +824,47 @@ class button(new.Ui_MainWindow):
 
 
     def URLFinder(self):
-        os.system(
-            'start ''cmd \"/K cd tools\\4_redteam\\4_JS探测\\URLFinder\\ && URLFinder.exe -u {} -s all -m 3\"'.format(
-                self.No_filtering()))
+        path = tools_path + "\\tools\\4_redteam\\4_JS探测\\URLFinder\\URLFinder.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-u', target,"-s", 'all','-m','3']
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            # 尝试打开程序所在的文件夹
+            program_dir = os.path.dirname(path)
+            # 如果程序所在的文件夹存在，就打开它
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            # 如果它不存在，就尝试打开更上层的 tools_path 目录 (如果它存在的话)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # os.system(
+        #     'start ''cmd \"/K cd tools\\4_redteam\\4_JS探测\\URLFinder\\ && URLFinder.exe -u {} -s all -m 3\"'.format(
+        #         self.No_filtering()))
 
 
 
     def jjjjjjjjjjjjs(self):
-        os.system(
-            'start ''cmd \"/K cd tools\\4_redteam\\4_JS探测\\jjjjjjjs\\ && jjjjjjjjjjjjjs.exe {} fuzz nobody\"'.format(
-                self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\4_JS探测\\jjjjjjjs\\jjjjjjjjjjjjjs.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, target,'fuzz nobody']
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # os.system(
+        #     'start ''cmd \"/K cd tools\\4_redteam\\4_JS探测\\jjjjjjjs\\ && jjjjjjjjjjjjjs.exe {} fuzz nobody\"'.format(
+        #         self.No_filtering()))
 
     def swagger_hack(self):
         os.system(
@@ -577,18 +915,46 @@ class button(new.Ui_MainWindow):
         subprocess.Popen(command, shell=True)
 
     def nuclei(self):
-        th = threading.Thread(target=self.nuclei_start, )  # 启动子类
-        th.start()
-    def nuclei_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\5_信息收集and漏扫\\B_nuclei\\ && nuclei.exe -u {} -rl 1000 -bs 200 -c 200 -stats\"'.format(
-                                                                                                             self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\5_信息收集and漏扫\\B_nuclei\\nuclei.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-u',target,'-stats']
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+        # th = threading.Thread(target=self.nuclei_start, )  # 启动子类
+        # th.start()
+    # def nuclei_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\5_信息收集and漏扫\\B_nuclei\\ && nuclei.exe -u {} -rl 1000 -bs 200 -c 200 -stats\"'.format(
+    #                                                                                                          self.No_filtering()))
 
     def afrog(self):
-        th = threading.Thread(target=self.afrog_start, )  # 启动子类
-        th.start()
-    def afrog_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\5_信息收集and漏扫\\afrog\\ && afrog.exe -t {}\"'.format(
-                                                                                                             self.No_filtering()))
+        path = tools_path+"\\tools\\4_redteam\\5_信息收集and漏扫\\afrog\\afrog.exe"
+        target = self.No_filtering()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-t',target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.afrog_start, )  # 启动子类
+    #     th.start()
+    # def afrog_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\5_信息收集and漏扫\\afrog\\ && afrog.exe -t {}\"'.format(
+    #                                                                                                          self.No_filtering()))
 
 
     def pocsuite3(self):
@@ -609,7 +975,9 @@ class button(new.Ui_MainWindow):
         command = '%SystemRoot%/explorer.exe tools\\4_redteam\\5_信息收集and漏扫\\SqlmapXPlus\\'  # 取当前目录
         subprocess.Popen(command, shell=True)  # 启动
 
-
+    def venom(self):
+        command = '%SystemRoot%/explorer.exe tools\\4_redteam\\5_信息收集and漏扫\\venom\\'  # 取当前目录
+        subprocess.Popen(command, shell=True)  # 启动
 
     # ============================================================================================================================================
     #                            分页栏3
@@ -656,7 +1024,7 @@ class button(new.Ui_MainWindow):
         th = threading.Thread(target=self.OAzonghe5_start, )  # 启动子类
         th.start()
     def OAzonghe5_start(self):
-        command = 'cd tools\\4_redteam\\6_框架and组件\\1_综合利用\\7_hyacinth\\ && {} -jar hyacinth-v2.0.jar'.format(java8_path)
+        command = 'cd tools\\4_redteam\\6_框架and组件\\1_综合利用\\7_hyacinth\\ && {} -jar hyacinth.jar'.format(java8_path)
         subprocess.Popen(command, shell=True)
 
     def OAzonghe6(self):
@@ -758,7 +1126,7 @@ class button(new.Ui_MainWindow):
         th.start()
 
     def struts2_one_start(self):
-        command = 'cd tools\\4_redteam\\6_框架and组件\\struts2\\ABC123\\ && {} -jar Struts2_19.32.jar'.format(java8_path)
+        command = 'cd tools\\4_redteam\\6_框架and组件\\struts2\\ABC123\\ && {} -jar Struts2.jar'.format(java8_path)
         subprocess.Popen(command, shell=True)
 
     def struts2zonghe(self):  # 待增加
@@ -847,6 +1215,16 @@ class button(new.Ui_MainWindow):
 
     def springboot_start(self):
         command = 'cd tools\\4_redteam\\6_框架and组件\\springboot\\springboot综合利用\\ && {} -jar SpringBootExploit-1.3-SNAPSHOT-all.jar'.format(
+            java8_path)
+        subprocess.Popen(command, shell=True)
+
+
+    def springboot2(self):
+        th = threading.Thread(target=self.springboot2_start, )  # 启动子类
+        th.start()
+
+    def springboot2_start(self):
+        command = 'cd tools\\4_redteam\\6_框架and组件\\springboot\\springboot2\\ && {} -jar Spring_All_Reachable-2.1.jar'.format(
             java8_path)
         subprocess.Popen(command, shell=True)
 
@@ -1082,6 +1460,15 @@ class button(new.Ui_MainWindow):
     def API_T00L_start(self):
         command = 'cd tools\\4_redteam\\7_zonghe\\OSS\\API-T00L\\ && {} -jar API-T00L_v1.3.jar'.format(java8_path)
         subprocess.Popen(command, shell=True)
+
+
+    def mapkey(self):  # 文档未改
+        th = threading.Thread(target=self.mapkey_start, )  # 启动子类
+        th.start()
+    def mapkey_start(self):
+        os.system(
+            'start ''cmd \"/K cd tools\\4_redteam\\7_zonghe\\OSS\\map_key_check-main\\ && {} check.py\"'.format(
+                python3))
 
     def old_JNDII(self):
         command = '%SystemRoot%/explorer.exe {} \\tools\\4_redteam\\7_zonghe\\内存马\\老JNDI\\'.format(tools_path)
@@ -1344,10 +1731,24 @@ class button(new.Ui_MainWindow):
         subprocess.Popen(command, shell=True)
 
     def redis(self):
-        th = threading.Thread(target=self.redis_start(), )  # 启动子类
-        th.start()
-    def redis_start(self):
-        os.system('start ''cmd \"/K cd tools\\4_redteam\\8_后渗透\\1_database\\ && redis-cli.exe -h {}\"'.format(self.No_filtering_four()))
+        path = tools_path+"\\tools\\4_redteam\\8_后渗透\\1_database\\redis-cli.exe"
+        target = self.No_filtering_four()
+        if os.path.exists(path):
+            # 将要执行的完整命令（程序+参数）构建成一个列表
+            scan_command = [path, '-h',target]
+            final_command = ['cmd', '/K'] + scan_command
+            tool_directory = os.path.dirname(path)
+            subprocess.Popen(final_command, creationflags=0x10, cwd=tool_directory)
+        else:
+            program_dir = os.path.dirname(path)
+            if os.path.exists(program_dir):
+                os.startfile(program_dir)
+            elif 'tools_path' in locals() and os.path.exists(tools_path):
+                os.startfile(tools_path)
+    #     th = threading.Thread(target=self.redis_start(), )  # 启动子类
+    #     th.start()
+    # def redis_start(self):
+    #     os.system('start ''cmd \"/K cd tools\\4_redteam\\8_后渗透\\1_database\\ && redis-cli.exe -h {}\"'.format(self.No_filtering_four()))
 
     def redis_desptop(self):
         th = threading.Thread(target=self.redis_desptop_start, )  # 启动子类
@@ -1913,8 +2314,9 @@ class button(new.Ui_MainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyle("windowsvista")
     w = QMainWindow()
     ui = button()
     ui.setupUi(w)
     w.show()
-    sys.exit(app.exec())  
+    sys.exit(app.exec())  # 注意 PyQt6 用 exec()
