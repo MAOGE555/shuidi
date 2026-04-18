@@ -6,26 +6,30 @@
 
 
 
-# 本次V10更新如下：
-- 优化了win11页面UI和win11启动卡顿问题
-- 增加一部分工具
-- 增加了一些浏览器插件（plugin目录）
-- 修复了一些bug
-- 大幅更新了内置工具版本
+# V11版本更新如下：
+- 去除一些out工具，添加一些新工具（转子女神、jssfind、若依、Redis利用、jsmap等等）
+- 输入框粘贴时，会带文本格式，现已统一格式
+- 调整UI布局，工具分类更合理
+- 更新了所有原有工具的版本
 
 
 ## 下载地址（转载请附上本项目地址）：
 
-- 百度网盘链接: 
-- https://pan.baidu.com/s/1xV7DXob4gQBSkwk9dzUNJw?pwd=qia3
-- 提取码: qia3 
+- 通过网盘分享的文件：水滴工具箱v11.zip
+- 链接: https://pan.baidu.com/s/1LirRTsUR0rbD-UsQC0D9-w?pwd=f1g4
+- 提取码: f1g4
 
 ## 工具截图：
-<img width="727" height="824" alt="image" src="https://github.com/user-attachments/assets/8d544f56-d9de-46fa-88ab-0f2fc80bbe3c" />
-<img width="724" height="821" alt="image" src="https://github.com/user-attachments/assets/ef3e78f0-fa9e-46c1-8ec9-aa19cf0b3397" />
-<img width="722" height="821" alt="image" src="https://github.com/user-attachments/assets/99df8821-57b6-4581-a221-027a69a185c0" />
-<img width="723" height="823" alt="image" src="https://github.com/user-attachments/assets/f3602ed6-8399-42ad-bcf6-a9af07a849f8" />
-<img width="1605" height="844" alt="image" src="https://github.com/user-attachments/assets/72e5ca05-fc60-43b8-9d84-44eb8ff8a231" />
+<img width="1558" height="846" alt="224657bf-7d15-4514-89b4-d82e3a5dbbb6" src="https://github.com/user-attachments/assets/21c58f8c-c811-4309-a16b-d71ed5d66b7b" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/ce60c3dc-a41e-4b65-9b8f-95298aff9dbe" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/84c6d25b-8dbc-401c-b5ff-ec08558b0133" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/206d5a71-b668-4a4a-ba59-a814ed521abf" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/45b18251-d993-48f6-a0a8-a623bae0d894" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/a1b2e831-a104-4f24-b553-66bc5b74989a" />
+<img width="720" height="817" alt="image" src="https://github.com/user-attachments/assets/c79deb0b-6218-491b-8cb8-78a6a8248aff" />
+
+
+
 
 
 
@@ -39,7 +43,7 @@ Q群：261086583
 
 
 ## 使用声明
-本工具箱集成了许多来自开源社区和互联网的优秀安全工具。对所有原作者的辛勤付出和开源分享，表示感谢！
+本工具箱集成的工具来源于互联网开源项目、收集的项目等，感谢作者们的无私开源，^_^ !
 
 本工具仅用于安全测试目的，用于非法用途与开发者无关。
 
